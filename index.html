@@ -3,12 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>لمسات الفخامة للمناسبات</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+:root{
+  --bg:#f6f6f8;
+  --text:#111;
+  --muted:#6b7280;
+  --primary:#ff2d75;
+  --dark:#0f0f10;
+  --card:#ffffff;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
 *{
   margin:0;
   padding:0;
@@ -17,43 +28,45 @@
 
 body{
   font-family: Inter, sans-serif;
-  background:#f7f7f8;
-  color:#111;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
 }
 
 /* HERO */
 .hero{
-  height:90vh;
-  background:url("https://images.unsplash.com/photo-1520854221256-17451cc331bf") center/cover;
+  min-height:92vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:url("https://images.unsplash.com/photo-1520854221256-17451cc331bf") center/cover no-repeat;
 }
 
-.hero::after{
+.hero::before{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.55);
+  background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.4));
 }
 
 .hero-content{
   position:relative;
-  text-align:center;
-  color:white;
-  max-width:700px;
+  max-width:720px;
   padding:20px;
+  color:#fff;
 }
 
 .hero h1{
-  font-size:55px;
+  font-size:clamp(2rem,4vw,3.5rem);
   font-weight:700;
+  letter-spacing:-0.5px;
 }
 
 .hero p{
-  margin-top:15px;
-  opacity:0.85;
+  margin-top:12px;
+  color:rgba(255,255,255,.85);
+  font-size:1.05rem;
 }
 
 /* BUTTONS */
@@ -61,75 +74,89 @@ body{
   margin-top:25px;
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
 }
 
 .btn{
   padding:12px 18px;
-  border-radius:30px;
-  border:none;
+  border-radius:999px;
+  border:1px solid transparent;
   cursor:pointer;
   font-weight:600;
+  transition:.25s ease;
+  font-size:.95rem;
 }
 
-.wa{background:#25D366;color:white;}
-.ig{background:#ff2d75;color:white;}
+.btn:hover{
+  transform:translateY(-2px);
+}
 
-/* SECTION */
+.btn-wa{
+  background:#25D366;
+  color:white;
+}
+
+.btn-ig{
+  background:linear-gradient(45deg,#ff2d75,#ff6a00);
+  color:white;
+}
+
+/* SECTIONS */
 .section{
-  padding:70px 20px;
   max-width:1100px;
   margin:auto;
+  padding:80px 20px;
 }
 
 .title{
   text-align:center;
-  font-size:28px;
-  margin-bottom:40px;
+  font-size:1.8rem;
+  margin-bottom:50px;
+  font-weight:700;
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
 }
 
 /* CARD */
 .card{
-  background:white;
-  border-radius:18px;
+  background:var(--card);
+  border-radius:var(--radius);
   overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.06);
-  transition:0.3s;
+  box-shadow:var(--shadow);
+  transition:.25s ease;
 }
 
 .card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
 }
 
 .card img{
   width:100%;
-  height:180px;
+  height:190px;
   object-fit:cover;
 }
 
 .card .content{
-  padding:15px;
+  padding:16px;
 }
 
 .card h3{
-  font-size:16px;
+  font-size:1rem;
   display:flex;
-  gap:10px;
+  gap:8px;
   align-items:center;
 }
 
 .card p{
-  font-size:13px;
-  opacity:0.7;
-  margin-top:8px;
+  color:var(--muted);
+  font-size:.9rem;
+  margin-top:6px;
 }
 
 /* ABOUT */
@@ -138,93 +165,100 @@ body{
   grid-template-columns:1fr 1fr;
   gap:40px;
   align-items:center;
-  margin-top:60px;
+  margin-top:80px;
 }
 
 .about img{
   width:100%;
-  border-radius:15px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
 }
 
 .about p{
-  opacity:0.7;
-  line-height:1.8;
+  color:var(--muted);
 }
 
 /* STATS */
 .stats{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:60px;
-  text-align:center;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+  margin-top:70px;
 }
 
 .stat{
-  background:white;
-  padding:20px;
-  border-radius:15px;
+  background:var(--card);
+  padding:22px;
+  border-radius:var(--radius);
+  text-align:center;
+  box-shadow:var(--shadow);
 }
 
 .stat h2{
-  color:#ff2d75;
-  font-size:28px;
+  color:var(--primary);
+  font-size:1.8rem;
 }
 
 /* GALLERY */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:60px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+  margin-top:70px;
 }
 
 .gallery img{
   width:100%;
-  height:160px;
+  height:180px;
   object-fit:cover;
   border-radius:12px;
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
 }
 
 /* REVIEWS */
 .reviews{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:20px;
-  margin-top:60px;
+  margin-top:70px;
 }
 
 .review{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-}
-
-.review p{
-  font-size:13px;
-  opacity:0.7;
-  margin-top:10px;
+  background:var(--card);
+  padding:18px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  color:var(--muted);
 }
 
 /* CTA */
 .cta{
-  margin-top:70px;
+  margin-top:80px;
   text-align:center;
-  background:#111;
+  background:var(--dark);
   color:white;
-  padding:50px;
-  border-radius:20px;
+  padding:60px 20px;
+  border-radius:var(--radius);
 }
 
 .cta button{
   margin-top:15px;
-  padding:12px 20px;
+  padding:12px 22px;
   border:none;
-  border-radius:30px;
+  border-radius:999px;
   cursor:pointer;
-  background:#ff2d75;
+  background:var(--primary);
   color:white;
   font-weight:600;
+  transition:.2s;
+}
+
+.cta button:hover{
+  transform:translateY(-2px);
 }
 
 /* FOOTER */
@@ -232,7 +266,14 @@ footer{
   text-align:center;
   padding:30px;
   font-size:12px;
-  opacity:0.6;
+  color:var(--muted);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .about{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -240,21 +281,22 @@ footer{
 <body>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
   <div class="hero-content">
     <h1>لمسات الفخامة</h1>
-    <p>نجعل يوم زفافك لحظة لا تُنسى بتفاصيل راقية وتجربة مميزة</p>
+    <p>نجعل يوم زفافك تجربة لا تُنسى بتفاصيل راقية</p>
 
     <div class="btns">
-      <button class="btn wa">واتساب</button>
-      <button class="btn ig">إنستغرام</button>
+      <button class="btn btn-wa">واتساب</button>
+      <button class="btn btn-ig">إنستغرام</button>
     </div>
   </div>
-</div>
+</section>
 
 <!-- SERVICES -->
-<div class="section">
-  <div class="title">خدماتنا</div>
+<section class="section">
+
+  <h2 class="title">خدماتنا</h2>
 
   <div class="grid">
 
@@ -278,7 +320,7 @@ footer{
       <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47">
       <div class="content">
         <h3>📸 تصوير</h3>
-        <p>صور طبيعية وسينمائية</p>
+        <p>صور سينمائية عالية الجودة</p>
       </div>
     </div>
 
@@ -288,10 +330,7 @@ footer{
   <div class="about">
     <div>
       <h2>من نحن</h2>
-      <p>
-        نحن فريق متخصص في تنظيم الأعراس والمناسبات، نركز على التفاصيل الدقيقة
-        لنصنع تجربة فريدة مليئة بالجمال والراحة.
-      </p>
+      <p>فريق متخصص في تنظيم الأعراس والمناسبات، نصنع تجربة فاخرة تعتمد على التفاصيل الدقيقة.</p>
     </div>
 
     <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
@@ -324,35 +363,22 @@ footer{
 
   <!-- REVIEWS -->
   <div class="reviews">
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>أفضل تجربة، تنظيم رائع جداً!</p>
-    </div>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>كل شيء كان مثالي يوم زفافي.</p>
-    </div>
-
-    <div class="review">
-      ⭐⭐⭐⭐⭐
-      <p>خدمة احترافية أنصح بها بشدة.</p>
-    </div>
-
+    <div class="review">⭐⭐⭐⭐⭐<br>أفضل تجربة تنظيم!</div>
+    <div class="review">⭐⭐⭐⭐⭐<br>كل شيء كان مثالي.</div>
+    <div class="review">⭐⭐⭐⭐⭐<br>خدمة احترافية جداً.</div>
   </div>
 
   <!-- CTA -->
   <div class="cta">
-    <h2>احجزي الآن يومك المميز</h2>
-    <p>تواصلي معنا لنصنع لك تجربة لا تُنسى</p>
+    <h2>احجزي الآن</h2>
+    <p>تواصلي معنا لنصنع لك لحظة لا تُنسى</p>
     <button>تواصل الآن</button>
   </div>
 
-</div>
+</section>
 
 <footer>
-© 2026 لمسات الفخامة - جميع الحقوق محفوظة
+© 2026 لمسات الفخامة
 </footer>
 
 </body>
